@@ -3,6 +3,7 @@ import express from "express";
 import registerRouter from "./routes/register.routes.js";
 import cors from "cors";
 import dotenv from "dotenv";
+import loginRouter from "./routes/login.routes.js";
 
 dotenv.config();
 
@@ -22,7 +23,10 @@ app.disable("x-powered-by");
 app.use(cors());
 app.use(express.json());
 
+// Routes
 app.use("/register", registerRouter);
+app.use("/login", loginRouter);
+
 const BACKEND_PORT = process.env.BACKEND_PORT || 3000;
 
 app.listen(BACKEND_PORT, () =>
