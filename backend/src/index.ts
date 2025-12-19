@@ -4,6 +4,7 @@ import registerRouter from "./routes/register.routes.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import loginRouter from "./routes/login.routes.js";
+import solveRouter from "./routes/solve.routes.js";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(express.json());
 // Routes
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+app.use("/solve", solveRouter);
 
 const BACKEND_PORT = process.env.BACKEND_PORT || 3000;
 

@@ -16,5 +16,15 @@ Content-Type: application/json
 
 {
   "email": "email2@gmail.com",
-  "password": "12345"
+  "password": "123456"
+}
+
+###
+POST http://localhost:3000/solve
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc0MjRlZDYzLTRhMTYtNDhlNS1iZGI0LWQ5YjNiZjgxMGVkMCIsImlhdCI6MTc2NjE2OTU0OSwiZXhwIjoxNzY2MTczMTQ5fQ.2-Yuwd568jz315mslhlhPfcLdNqm0y9m1zAbrn9voaQ
+
+{
+  "time": 15342,
+  "scramble": "R U R' U' F2 D"
 }
