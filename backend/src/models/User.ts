@@ -6,9 +6,12 @@ interface UserAttributes {
   name: string;
   email: string;
   passwordHash: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
-interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
+interface UserCreationAttributes
+  extends Optional<UserAttributes, "id" | "createdAt" | "updatedAt"> {}
 
 class User
   extends Model<UserAttributes, UserCreationAttributes>
@@ -18,6 +21,8 @@ class User
   public name!: string;
   public email!: string;
   public passwordHash!: string;
+  public createdAt!: string;
+  public updatedAt!: string;
 }
 
 User.init(
@@ -40,9 +45,20 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    createdAt: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
   },
   {
     sequelize,
+    timestamps: true,
   }
 );
 
