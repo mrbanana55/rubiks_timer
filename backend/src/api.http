@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "name": "Andres",
-    "email": "email2@gmail.com",
+    "email": "email3@gmail.com",
     "password": "123456"
 }
 
@@ -15,16 +15,24 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "email": "email2@gmail.com",
+  "email": "email3@gmail.com",
   "password": "123456"
 }
 
 ###
+# Add a solve to db
 POST http://localhost:3000/solve
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc0MjRlZDYzLTRhMTYtNDhlNS1iZGI0LWQ5YjNiZjgxMGVkMCIsImlhdCI6MTc2NjE2OTU0OSwiZXhwIjoxNzY2MTczMTQ5fQ.2-Yuwd568jz315mslhlhPfcLdNqm0y9m1zAbrn9voaQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3NjA0NTY4LTNkYmUtNDM4OC1hM2EwLTlhMDBiZjZmMDQzZCIsImlhdCI6MTc2NjIwMzQ0MCwiZXhwIjoxNzY2MjA3MDQwfQ.hk-AZf0tfud873Px-Ntyo5IinYsIVpYIh8Z6WIJ8mjo
 
 {
   "time": 15342,
   "scramble": "R U R' U' F2 D"
 }
+
+###
+# GET user profile
+
+GET http://localhost:3000/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3NjA0NTY4LTNkYmUtNDM4OC1hM2EwLTlhMDBiZjZmMDQzZCIsImlhdCI6MTc2NjIwMzQ0MCwiZXhwIjoxNzY2MjA3MDQwfQ.hk-AZf0tfud873Px-Ntyo5IinYsIVpYIh8Z6WIJ8mjo
