@@ -1,7 +1,8 @@
 import { Response, Request } from "express";
 import User from "../models/User.js";
+import Solve from "../models/Solve.js";
 
-export default async function getProfile(req: Request, res: Response) {
+export async function getProfile(req: Request, res: Response) {
   try {
     const userId = req.user.id;
 
@@ -22,5 +23,21 @@ export default async function getProfile(req: Request, res: Response) {
     });
   } catch (error) {
     return res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+export async function getTimes(req: Request, res: Response) {
+  try {
+    const userId = req.user.id;
+
+    const times = await Solve.findAll({
+      attributes: ["id", "time", "scramble", "createdAt"],
+      where: { userId: userId },
+      order: [["createdAt", "DESC"]],
+    });
+
+    return res.status(200).json({ times: times });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
   }
 }

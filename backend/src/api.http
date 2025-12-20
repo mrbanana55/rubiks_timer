@@ -27,12 +27,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3NjA0NTY4L
 
 {
   "time": 15342,
-  "scramble": "R U R' U' F2 D"
+  "scramble": "R U R' U' F2 D U L'"
 }
 
 ###
 # GET user profile
 
 GET http://localhost:3000/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3NjA0NTY4LTNkYmUtNDM4OC1hM2EwLTlhMDBiZjZmMDQzZCIsImlhdCI6MTc2NjIwMzQ0MCwiZXhwIjoxNzY2MjA3MDQwfQ.hk-AZf0tfud873Px-Ntyo5IinYsIVpYIh8Z6WIJ8mjo
+
+###
+#GET user times
+
+GET http://localhost:3000/profile/times
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3NjA0NTY4LTNkYmUtNDM4OC1hM2EwLTlhMDBiZjZmMDQzZCIsImlhdCI6MTc2NjIwMzQ0MCwiZXhwIjoxNzY2MjA3MDQwfQ.hk-AZf0tfud873Px-Ntyo5IinYsIVpYIh8Z6WIJ8mjo
