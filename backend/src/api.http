@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "name": "Andres",
-    "email": "email3@gmail.com",
+    "email": "email@email.com",
     "password": "123456"
 }
 
@@ -15,31 +15,50 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-  "email": "email3@gmail.com",
+  "email": "email@email.com",
   "password": "123456"
 }
 
 ###
+
 # Add a solve to db
 POST http://localhost:3000/solve
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3NjA0NTY4LTNkYmUtNDM4OC1hM2EwLTlhMDBiZjZmMDQzZCIsImlhdCI6MTc2NjIwMzQ0MCwiZXhwIjoxNzY2MjA3MDQwfQ.hk-AZf0tfud873Px-Ntyo5IinYsIVpYIh8Z6WIJ8mjo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzMWE2OWIwLTg5MDItNDhkYS1iZTNmLWRlYmIzOTAzOTg1OSIsImlhdCI6MTc2NjM5MDYxNCwiZXhwIjoxNzY2Mzk0MjE0fQ.Q5J9vuqSg190xeYHjNkkLJ6uCt4b1TFy9IOhPF8oY9U
 
 {
-  "time": 15342,
+  "time": 15,
   "scramble": "R U R' U' F2 D U L'"
 }
 
 ###
-# GET user profile
 
+# GET user profile
 GET http://localhost:3000/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3NjA0NTY4LTNkYmUtNDM4OC1hM2EwLTlhMDBiZjZmMDQzZCIsImlhdCI6MTc2NjIwMzQ0MCwiZXhwIjoxNzY2MjA3MDQwfQ.hk-AZf0tfud873Px-Ntyo5IinYsIVpYIh8Z6WIJ8mjo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzMWE2OWIwLTg5MDItNDhkYS1iZTNmLWRlYmIzOTAzOTg1OSIsImlhdCI6MTc2NjM5MDYxNCwiZXhwIjoxNzY2Mzk0MjE0fQ.Q5J9vuqSg190xeYHjNkkLJ6uCt4b1TFy9IOhPF8oY9U
 
 ###
-#GET user times
 
+# PUT user profile
+PUT http://localhost:3000/profile/edit
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzMWE2OWIwLTg5MDItNDhkYS1iZTNmLWRlYmIzOTAzOTg1OSIsImlhdCI6MTc2NjM5MDYxNCwiZXhwIjoxNzY2Mzk0MjE0fQ.Q5J9vuqSg190xeYHjNkkLJ6uCt4b1TFy9IOhPF8oY9U
+
+{
+  "name": "Juan"
+}
+
+###
+
+#GET user times
 GET http://localhost:3000/profile/times
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU3NjA0NTY4LTNkYmUtNDM4OC1hM2EwLTlhMDBiZjZmMDQzZCIsImlhdCI6MTc2NjIwMzQ0MCwiZXhwIjoxNzY2MjA3MDQwfQ.hk-AZf0tfud873Px-Ntyo5IinYsIVpYIh8Z6WIJ8mjo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzMWE2OWIwLTg5MDItNDhkYS1iZTNmLWRlYmIzOTAzOTg1OSIsImlhdCI6MTc2NjM5MDYxNCwiZXhwIjoxNzY2Mzk0MjE0fQ.Q5J9vuqSg190xeYHjNkkLJ6uCt4b1TFy9IOhPF8oY9U
+
+###
+
+#DELETE Solve
+DELETE  http://localhost:3000/solve/daa4289d-71f5-4c84-a5c5-af0f8d3d7643
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEzMWE2OWIwLTg5MDItNDhkYS1iZTNmLWRlYmIzOTAzOTg1OSIsImlhdCI6MTc2NjM5MDYxNCwiZXhwIjoxNzY2Mzk0MjE0fQ.Q5J9vuqSg190xeYHjNkkLJ6uCt4b1TFy9IOhPF8oY9U
