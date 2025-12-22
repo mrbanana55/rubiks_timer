@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
+import { jwtPayload } from "../schemas/jwtPayload.schema.js";
 
 dotenv.config();
 
@@ -27,8 +28,13 @@ export default function authentication(
   const SECRET_JWT = process.env.SECRET_JWT;
 
   try {
-    const decoded = jwt.verify(token, SECRET_JWT);
-    req.user = decoded;
+    const decodedToken = jwt.verify(token, SECRET_JWT as string);
+    const parsedToken = jwtPayload.safeParse(decodedToken);
+    if (!parsedToken.success) {
+      return res.status(401).json({ error: "Invalid token payload" });
+    }
+
+    req.user = parsedToken.data;
     next();
   } catch (error) {
     return res.status(401).json({ error: "invalid token" });

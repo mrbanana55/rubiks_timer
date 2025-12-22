@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import validateLogin from "../schemas/loginSchema.js";
-import User from "../models/User.js";
+import validateLogin from "../../schemas/login.schema.js";
+import User from "../../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -12,7 +12,7 @@ export default async function login(req: Request, res: Response) {
     //body validation
     const result = validateLogin(req.body);
     if (result.error) {
-      return res.status(400).json({ error: result.error.message });
+      return res.status(400).json({ error: "Invalid body" });
     }
     // get data from result
     const { email, password } = result.data;

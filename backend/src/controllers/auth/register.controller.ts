@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import validateRegister from "../schemas/registerSchema.js";
-import User from "../models/User.js";
+import validateRegister from "../../schemas/register.schema.js";
+import User from "../../models/User.js";
 import bcrypt from "bcrypt";
 
 export default async function Register(req: Request, res: Response) {
@@ -8,7 +8,7 @@ export default async function Register(req: Request, res: Response) {
     // Body validation using zod
     const result = validateRegister(req.body);
     if (result.error) {
-      return res.status(400).json({ error: result.error.message });
+      return res.status(400).json({ error: "Invalid body" });
     }
     // If valid body, extract data from body
     const { email, password, name } = result.data;

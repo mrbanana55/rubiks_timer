@@ -9,7 +9,7 @@ import profileRouter from "./routes/profile.routes.js";
 
 dotenv.config();
 
-// Conncect to database
+// Connect to database
 console.log("Connecting to database...");
 await connectDB();
 
@@ -19,7 +19,7 @@ await sequelize.sync();
 
 console.log("succesful sync");
 
-// Create epxress app
+// Create express app
 const app = express();
 app.disable("x-powered-by");
 app.use(cors());
