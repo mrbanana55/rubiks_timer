@@ -19,7 +19,7 @@ export default async function login(req: Request, res: Response) {
 
     //find id, email and password
     const user = await User.findOne({
-      attributes: ["id", "email", "passwordHash"],
+      attributes: ["id", "email", "passwordHash", "name"],
       where: {
         email: email,
       },
@@ -44,7 +44,9 @@ export default async function login(req: Request, res: Response) {
       { expiresIn: "1h" }
     );
 
-    return res.status(200).json({ token: token });
+    return res
+      .status(200)
+      .json({ token: token, email: userData.email, name: userData.name });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: "Internal server error" });
