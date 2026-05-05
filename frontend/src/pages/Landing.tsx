@@ -1,13 +1,16 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import Layout from "../layouts/layout";
 import { useTimer } from "../hooks/useTimer";
 import { formatTime } from "../utils/formatTime";
 import Scramble from "../components/timer/Scramble";
 import CubeVisualizer from "../components/timer/CubeVisualizer";
 import { randomScrambleForEvent } from "cubing/scramble";
+import useAuth from "../auth/useAuth";
 
-const Landing: React.FC = () => {
+const Landing = () => {
+  const { token } = useAuth();
   const [scramble, setScramble] = useState<string>("Generating scramble...");
+  const initialized = useRef<null | true>(null);
 
   const generateNewScramble = useCallback(async () => {
     try {
@@ -15,20 +18,35 @@ const Landing: React.FC = () => {
       setScramble(newScramble.toString());
     } catch (error) {
       console.error("Failed to generate scramble:", error);
-      setScramble("R U R' U'"); // Fallback
+      setScramble("R U R' U'");
     }
   }, []);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      generateNewScramble();
-    }, 0);
-    return () => clearTimeout(timeout);
-  }, [generateNewScramble]);
-
-  const onFinish = useCallback(() => {
+  if (initialized.current == null) {
+    initialized.current = true;
     generateNewScramble();
-  }, [generateNewScramble]);
+  }
+
+  const onFinish = useCallback(
+    async (time: number) => {
+      if (token && scramble !== "Generating scramble...") {
+        try {
+          await fetch("http://localhost:3000/solve", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ time, scramble }),
+          });
+        } catch (error) {
+          console.error("Failed to save solve:", error);
+        }
+      }
+      generateNewScramble();
+    },
+    [token, scramble, generateNewScramble],
+  );
 
   const { time, state, isHolding } = useTimer(onFinish);
 

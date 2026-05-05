@@ -5,6 +5,7 @@ interface ImportMetaEnv {
   // more env variables...
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface ImportMeta {
   readonly env: ImportMetaEnv
 }
@@ -17,7 +18,7 @@ declare module "*.css" {
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      "twisty-player": any;
+      "twisty-player": Record<string, unknown>;
     }
   }
 }

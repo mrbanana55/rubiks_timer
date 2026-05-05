@@ -1,8 +1,7 @@
-import React from "react";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../auth/useAuth";
 
-const NavBar: React.FC = () => {
+const NavBar = () => {
   const { token, logout } = useAuth();
   const navigate = useNavigate();
 

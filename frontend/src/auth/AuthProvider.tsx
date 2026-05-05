@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState, useCallback, type ReactNode } from "react";
 import { AuthContext } from "./AuthContext";
 
 const TOKEN_KEY = "token";
@@ -8,15 +8,15 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.getItem(TOKEN_KEY)
   );
 
-  const login = (token: string) => {
+  const login = useCallback((token: string) => {
     setToken(token);
     localStorage.setItem(TOKEN_KEY, token);
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setToken(null);
     localStorage.removeItem(TOKEN_KEY);
-  };
+  }, []);
 
   return (
     <AuthContext.Provider value={{ token, login, logout }}>

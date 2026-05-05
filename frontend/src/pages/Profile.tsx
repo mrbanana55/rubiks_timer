@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Layout from "../layouts/layout";
 import useAuth from "../auth/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { formatTime } from "../utils/formatTime";
 import { calculateAoN } from "../utils/stats";
 import {
@@ -21,7 +21,7 @@ interface Solve {
   createdAt: string;
 }
 
-const Profile: React.FC = () => {
+const Profile = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
   const [solves, setSolves] = useState<Solve[]>([]);
@@ -29,7 +29,7 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     if (!token) {
-      navigate("/signup");
+      navigate("/login");
       return;
     }
 
@@ -115,7 +115,7 @@ const Profile: React.FC = () => {
                   stroke="#9ca3af"
                 />
                 <Tooltip 
-                  formatter={(value: any) => [formatTime(Number(value) * 1000), "Time"]}
+                  formatter={(value: unknown) => [formatTime(Number(value) * 1000), "Time"]}
                   labelFormatter={() => ""}
                 />
                 <Line 

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useAuth from "../auth/useAuth";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 
-const RegisterForm: React.FC = () => {
+const RegisterForm = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -151,9 +151,9 @@ const RegisterForm: React.FC = () => {
       
       <p className="text-center text-sm text-gray-500 pt-2 border-t border-gray-100">
         Already have an account?
-        <a href="/login" className="ml-2 text-blue-600 hover:underline">
+        <Link to="/login" className="ml-2 text-blue-600 hover:underline">
           Login
-        </a>
+        </Link>
       </p>
     </form>
   );

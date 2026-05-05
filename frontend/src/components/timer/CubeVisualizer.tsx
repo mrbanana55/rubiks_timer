@@ -1,24 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import { useRef } from "react";
 import "cubing/twisty";
 
 interface CubeVisualizerProps {
   scramble: string;
 }
 
-const CubeVisualizer: React.FC<CubeVisualizerProps> = ({ scramble }) => {
-  const playerRef = useRef<any>(null);
-
-  useEffect(() => {
-    if (
-      playerRef.current &&
-      scramble &&
-      scramble !== "Generating scramble..."
-    ) {
-      playerRef.current.scramble = scramble;
-    }
-  }, [scramble]);
+const CubeVisualizer = ({ scramble }: CubeVisualizerProps) => {
+  const playerRef = useRef<HTMLElement>(null);
 
   // Bypassing TS error for custom element
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const TwistyPlayer = "twisty-player" as any;
 
   return (

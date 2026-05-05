@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import useAuth from "../auth/useAuth";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 
-const LoginForm: React.FC = () => {
+const LoginForm = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -90,9 +90,9 @@ const LoginForm: React.FC = () => {
       {error && <p className="text-center text-red-500 text-xs">{error}</p>}
       <p className="text-center text-sm text-gray-500">
         Don't have an account?
-        <a href="/signup" className="ml-2 text-blue-600 hover:underline">
+        <Link to="/signup" className="ml-2 text-blue-600 hover:underline">
           Sign up
-        </a>
+        </Link>
       </p>
     </form>
   );
