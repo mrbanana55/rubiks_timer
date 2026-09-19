@@ -29,6 +29,7 @@ logs/
 .cache/
 .tmp/
 temp/
+.DS_Store
 
 # =========================
 # IDEs y editores
